@@ -45,5 +45,6 @@ export default defineConfig({
     setupFiles: './vitest.setup.ts',
     css: true,
     testTimeout: 10000,
+    exclude: ['**/node_modules/**', '**/.claude/**'],
   },
 });
