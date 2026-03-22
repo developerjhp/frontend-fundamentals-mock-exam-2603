@@ -42,17 +42,17 @@ export function RoomSelectionSection({
           {rooms.map((room: Room) => {
             const isSelected = selectedRoomId === room.id;
             return (
-              <div
+              <button
+                type="button"
                 key={room.id}
                 onClick={() => onSelectRoom(room.id)}
-                role="button"
                 aria-pressed={isSelected}
                 aria-label={room.name}
                 css={css`
                   cursor: pointer; padding: 14px 16px; border-radius: 14px;
                   border: 2px solid ${isSelected ? colors.blue500 : colors.grey200};
                   background: ${isSelected ? colors.blue50 : colors.white};
-                  transition: all 0.15s;
+                  transition: all 0.15s; text-align: left; width: 100%;
                   &:hover { border-color: ${isSelected ? colors.blue500 : colors.grey300}; }
                 `}
               >
@@ -71,7 +71,7 @@ export function RoomSelectionSection({
                     ) : undefined
                   }
                 />
-              </div>
+              </button>
             );
           })}
         </div>

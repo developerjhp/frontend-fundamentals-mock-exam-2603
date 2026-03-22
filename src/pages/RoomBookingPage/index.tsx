@@ -38,7 +38,7 @@ export function RoomBookingPage() {
   const { data: reservations } = useReservations(filters.date);
   const createMutation = useCreateReservation();
 
-  const floors = getUniqueFloors((rooms as any)?.data ?? rooms ?? []);
+  const floors = getUniqueFloors(rooms ?? []);
   const showRoomSection = isFilterComplete && !validationError;
   const availableRooms = showRoomSection ? getAvailableRooms(rooms ?? [], reservations ?? [], filters) : [];
 

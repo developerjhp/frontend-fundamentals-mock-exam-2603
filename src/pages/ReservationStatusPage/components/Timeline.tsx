@@ -62,13 +62,14 @@ export function Timeline({ rooms, reservations }: TimelineProps) {
                 const isActive = activeReservation === res.id;
                 return (
                   <div key={res.id} css={css`position: absolute; left: ${left}%; width: ${width}%; height: 100%;`}>
-                    <div
-                      role="button"
+                    <button
+                      type="button"
                       aria-label={`${room.name} ${res.start}-${res.end} 예약 상세`}
                       onClick={() => setActiveReservation(isActive ? null : res.id)}
                       css={css`
                         width: 100%; height: 100%; background: ${colors.blue400}; border-radius: 4px;
                         opacity: ${isActive ? 1 : 0.75}; cursor: pointer; transition: opacity 0.15s;
+                        border: none; padding: 0;
                         &:hover { opacity: 1; }
                       `}
                     />
