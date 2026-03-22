@@ -61,7 +61,7 @@ export function RoomSelectionSection({
                     <ListRow.Text2Rows
                       top={room.name}
                       topProps={{ typography: 't6', fontWeight: 'bold', color: colors.grey900 }}
-                      bottom={`${room.floor}층 · ${room.capacity}명 · ${room.equipment.map((e: string) => EQUIPMENT_LABELS[e as keyof typeof EQUIPMENT_LABELS]).join(', ')}`}
+                      bottom={`${room.floor}층 · ${room.capacity}명 · ${room.equipment.map(e => EQUIPMENT_LABELS[e]).join(', ')}`}
                       bottomProps={{ typography: 't7', color: colors.grey600 }}
                     />
                   }
