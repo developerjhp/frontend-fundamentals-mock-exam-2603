@@ -1,12 +1,11 @@
 import { css } from '@emotion/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Top, Spacing, Border } from '_tosslib/components';
 import { colors } from '_tosslib/constants/colors';
 import axios from 'axios';
 import type { ServerErrorData } from 'pages/types';
 import { getAvailableRooms, getUniqueFloors } from 'pages/utils/filterRooms';
-import { formatDate } from 'pages/utils/date';
 import { useBookingFilters } from 'pages/hooks/useBookingFilters';
 import { useRooms } from 'pages/hooks/useRooms';
 import { useReservations } from 'pages/hooks/useReservations';
@@ -26,13 +25,6 @@ export function RoomBookingPage() {
   };
 
   const { filters, actions, isFilterComplete, validationError } = useBookingFilters(handleFilterChange);
-
-  useEffect(() => {
-    if (!filters.date) {
-      actions.setDate(formatDate(new Date()));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const { data: rooms } = useRooms();
   const { data: reservations } = useReservations(filters.date);

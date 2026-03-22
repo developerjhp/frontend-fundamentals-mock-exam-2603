@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { Equipment } from 'pages/types';
 import type { RoomFilterCriteria } from 'pages/utils/filterRooms';
+import { formatDate } from 'pages/utils/date';
 
 export interface BookingFilterActions {
   setDate: (date: string) => void;
@@ -21,7 +22,7 @@ export function useBookingFilters(onFilterChange?: () => void) {
     const attendeesParam = searchParams.get('attendees');
 
     return {
-      date: searchParams.get('date') ?? '',
+      date: searchParams.get('date') || formatDate(new Date()),
       startTime: searchParams.get('startTime') ?? '',
       endTime: searchParams.get('endTime') ?? '',
       attendees: attendeesParam ? Math.max(1, Number(attendeesParam)) : 1,
